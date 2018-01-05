@@ -10,6 +10,8 @@ import Button from '@folio/stripes-components/lib/Button';
 import Items from './Items';
 import ItemForm from './edit/items/ItemForm';
 
+import css from './Holdings.css';
+
 class ItemsPerHoldingsRecord extends React.Component {
 
   static manifest = Object.freeze({
@@ -82,7 +84,7 @@ class ItemsPerHoldingsRecord extends React.Component {
 
     return (
       <div>
-        <Row onClick={this.viewHoldingsRecord}>
+        <Row onClick={this.viewHoldingsRecord} className={css.holdingsHover}>
           <Col sm={4}>
             <KeyValue label="Callnumber" value={holdingsRecord.callNumber} />
           </Col>
@@ -106,11 +108,13 @@ class ItemsPerHoldingsRecord extends React.Component {
             {newItemButton}
           </Col>
         </Row>
-        <Row>
-          <Col sm={10} smOffset={1}>
-            <this.cItems holdingsRecord={holdingsRecord} referenceTables={referenceTables} okapi={okapi} instance={instance} location={location} history={this.props.history} match={this.props.match} />
-          </Col>
-        </Row>
+        <div className={css.indent}>
+          <Row>
+            <Col sm={12}>
+              <this.cItems holdingsRecord={holdingsRecord} referenceTables={referenceTables} okapi={okapi} instance={instance} location={location} history={this.props.history} match={this.props.match} />
+            </Col>
+          </Row>
+        </div>
         <br />
         <Layer key={`itemformlayer_${holdingsRecord.id}`} isOpen={addItemMode ? (addItemMode.mode && this.addItemModeThisLayer) : false} label="Add New Item Dialog">
           <ItemForm
