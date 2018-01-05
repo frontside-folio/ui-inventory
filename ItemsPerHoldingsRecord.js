@@ -10,7 +10,7 @@ import Button from '@folio/stripes-components/lib/Button';
 import Items from './Items';
 import ItemForm from './edit/items/ItemForm';
 
-import css from './Holdings.css';
+import css from './Inventory.css';
 
 class ItemsPerHoldingsRecord extends React.Component {
 
