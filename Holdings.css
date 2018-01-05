@@ -3,6 +3,7 @@
 .holdingsHover {
   padding-top: 6px;
   border-radius: var(--radius);
+
   &:hover {
     cursor: pointer;
     background-color: #ececec;
