@@ -137,35 +137,30 @@ class ViewInstance extends React.Component {
 
     const instance = (selInstance && id) ? selInstance.find(i => i.id === id) : null;
 
-    const detailMenu = (
-      <PaneMenu>
-        <IconButton
-          id="clickable-copy-instance"
-          onClick={() => onCopy(instance)}
-          title="Copy Instance"
-          icon="duplicate"
-        />
-        <IconButton
-          id="clickable-edit-instance"
-          style={{ visibility: !instance ? 'hidden' : 'visible' }}
-          href={this.craftLayerUrl('edit')}
-          onClick={this.onClickEditInstance}
-          title="Edit Instance"
-          icon="edit"
-        />
-        <IconButton
-          id="clickable-show-notes"
-          style={{ visibility: !instance ? 'hidden' : 'visible' }}
-          onClick={this.props.notesToggle}
-          title="Show Notes"
-          icon="comment"
-        />
-      </PaneMenu>
-    );
+    const actionMenuItems = [
+      {
+        id: 'clickable-copy-instance',
+        onClick: () => onCopy(instance),
+        label: 'Copy',
+        title: 'Copy Instance',
+        icon: 'duplicate',
+      }
+    ];
+
+    if (instance) {
+      actionMenuItems.push({
+        id: 'clickable-edit-instance',
+        href: this.craftLayerUrl('edit'),
+        onClick: this.onClickEditInstance,
+        label: 'Edit',
+        title: 'Edit Instance',
+        icon: 'edit',
+      });
+    }
 
     if (!instance) {
       return (
-        <Pane id="pane-instancedetails" defaultWidth={this.props.paneWidth} paneTitle="Instance Details" lastMenu={detailMenu} dismissible onClose={this.props.onClose}>
+        <Pane id="pane-instancedetails" defaultWidth={this.props.paneWidth} paneTitle="Instance Details" dismissible onClose={this.props.onClose}>
           <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
         </Pane>
       );
@@ -197,7 +192,7 @@ class ViewInstance extends React.Component {
         defaultWidth={this.props.paneWidth}
         paneTitle={instance.title}
         paneSub={instanceSub()}
-        lastMenu={detailMenu}
+        actionMenuItems={actionMenuItems}
         dismissible
         onClose={this.props.onClose}
       >

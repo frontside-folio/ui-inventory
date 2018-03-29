@@ -72,8 +72,8 @@ function ItemForm(props) {
   } = props;
 
   /* Menus for Add Item workflow */
-  const addItemLastMenu = <PaneMenu><Button buttonStyle="primary paneHeaderNewButton" id="clickable-create-item" type="submit" title="Create New Item" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Create item</Button></PaneMenu>;
-  const editItemLastMenu = <PaneMenu><Button buttonStyle="primary paneHeaderNewButton" id="clickable-update-item" type="submit" title="Update Item" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Update item</Button></PaneMenu>;
+  const addItemLastMenu = <PaneMenu><Button marginBottom0 buttonStyle="primary paneHeaderNewButton" id="clickable-create-item" type="submit" title="Create New Item" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Create item</Button></PaneMenu>;
+  const editItemLastMenu = <PaneMenu><Button marginBottom0 buttonStyle="primary paneHeaderNewButton" id="clickable-update-item" type="submit" title="Update Item" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Update item</Button></PaneMenu>;
 
   const materialTypeOptions = referenceTables.materialTypes ?
     referenceTables.materialTypes.map((t) => {

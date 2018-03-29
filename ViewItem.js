@@ -5,12 +5,10 @@ import queryString from 'query-string';
 
 import Layer from '@folio/stripes-components/lib/Layer';
 import Pane from '@folio/stripes-components/lib/Pane';
-import PaneMenu from '@folio/stripes-components/lib/PaneMenu';
 import { Accordion } from '@folio/stripes-components/lib/Accordion';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import Headline from '@folio/stripes-components/lib/Headline';
-import IconButton from '@folio/stripes-components/lib/IconButton';
 import AppIcon from '@folio/stripes-components/lib/AppIcon';
 
 import craftLayerUrl from '@folio/stripes-components/util/craftLayerUrl';
@@ -122,24 +120,26 @@ class ViewItem extends React.Component {
 
     const query = location.search ? queryString.parse(location.search) : {};
 
-    const detailMenu = (
-      <PaneMenu>
-        <IconButton
-          id="clickable-copy-item"
-          onClick={() => this.onCopy(item)}
-          title="Copy Item"
-          icon="duplicate"
-        />
-        <IconButton
-          icon="edit"
-          id="clickable-edit-item"
-          style={{ visibility: !item ? 'hidden' : 'visible' }}
-          href={this.craftLayerUrl('editItem')}
-          onClick={this.onClickEditItem}
-          title="Edit Item"
-        />
-      </PaneMenu>
-    );
+    const actionMenuItems = [
+      {
+        id: 'clickable-copy-item',
+        onClick: () => this.onCopy(item),
+        label: 'Copy',
+        title: 'Copy Item',
+        icon: 'duplicate',
+      }
+    ];
+
+    if (item) {
+      actionMenuItems.push({
+        icon: 'edit',
+        id: 'clickable-edit-item',
+        href: this.craftLayerUrl('editItem'),
+        onClick: this.onClickEditItem,
+        label: 'Edit',
+        title: 'Edit Item',
+      });
+    }
 
     const labelLocation = holdingsRecord.permanentLocationId ? referenceTables.shelfLocations.find(loc => holdingsRecord.permanentLocationId === loc.id).name : '';
     const labelCallNumber = holdingsRecord.callNumber || '';
@@ -157,7 +157,7 @@ class ViewItem extends React.Component {
                 </div>
               </div>
             }
-            lastMenu={detailMenu}
+            actionMenuItems={actionMenuItems}
             dismissible
             onClose={this.props.onCloseViewItem}
           >
