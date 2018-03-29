@@ -132,8 +132,8 @@ class InstanceForm extends React.Component {
     ) : [];
 
     /* Menus for Add Instance workflow */
-    const addInstanceLastMenu = <PaneMenu><Button buttonStyle="primary paneHeaderNewButton" id="clickable-create-instance" type="submit" title="Create New Instance" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Create instance</Button></PaneMenu>;
-    const editInstanceLastMenu = <PaneMenu><Button buttonStyle="primary paneHeaderNewButton" id="clickable-update-instance" type="submit" title="Update Instance" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Update instance</Button></PaneMenu>;
+    const addInstanceLastMenu = <PaneMenu><Button marginBottom0 buttonStyle="primary paneHeaderNewButton" id="clickable-create-instance" type="submit" title="Create New Instance" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Create instance</Button></PaneMenu>;
+    const editInstanceLastMenu = <PaneMenu><Button marginBottom0 buttonStyle="primary paneHeaderNewButton" id="clickable-update-instance" type="submit" title="Update Instance" disabled={(pristine || submitting) && !copy} onClick={handleSubmit}>Update instance</Button></PaneMenu>;
     return (
       <form>
         <Paneset isRoot>
