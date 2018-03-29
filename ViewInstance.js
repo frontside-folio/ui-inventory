@@ -137,6 +137,18 @@ class ViewInstance extends React.Component {
 
     const instance = (selInstance && id) ? selInstance.find(i => i.id === id) : null;
 
+    const detailMenu = (
+      <PaneMenu>
+        <IconButton
+          id="clickable-show-notes"
+          style={{ visibility: !instance ? 'hidden' : 'visible' }}
+          onClick={this.props.notesToggle}
+          title="Show Notes"
+          icon="comment"
+        />
+      </PaneMenu>
+    );
+
     const actionMenuItems = [
       {
         id: 'clickable-copy-instance',
@@ -192,6 +204,7 @@ class ViewInstance extends React.Component {
         defaultWidth={this.props.paneWidth}
         paneTitle={instance.title}
         paneSub={instanceSub()}
+        lastMenu={detailMenu}
         actionMenuItems={actionMenuItems}
         dismissible
         onClose={this.props.onClose}
