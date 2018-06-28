@@ -45,7 +45,7 @@ const filterConfig = [
   {
     label: 'Location',
     name: 'location',
-    cql: 'holdingsRecords.permanentLocationId',
+    cql: 'effectiveLocation',
     values: [],
   },
 ];
@@ -106,8 +106,31 @@ class Instances extends React.Component {
 
             let cql = searchableIndex.makeQuery(resourceData.query.query, makeQueryArgs);
 
-            const filterCql = filters2cql(filterConfig, resourceData.query.filters);
+            let filterCql = filters2cql(filterConfig, resourceData.query.filters);
+
             if (filterCql) {
+              // Pattern: effectiveLocation="abc" or effectiveLocation=("abc", "xyz")
+              const locationQueryMatch = /effectiveLocation=(\("[^=]*"\)|"[^=]*")/.exec(filterCql);
+              if (locationQueryMatch) {
+                // Build 'effective location' query
+                const criteria = locationQueryMatch[0];
+                const criteriaValue = criteria.split('=')[1];
+                filterCql = filterCql.replace(criteria,
+                  '( (cql.allRecords=1 ' +
+                    ' not holdingsRecords.temporaryLocationId="" not item.permanentLocationId="" not item.temporaryLocationId=""' +
+                    ` and holdingsRecords.permanentLocationId=${criteriaValue})` +
+                    ' or ' +
+                    '(cql.allRecords=1 ' +
+                    ' not item.permanentLocationId="" not item.temporaryLocationId=""' +
+                    ` and holdingsRecords.temporaryLocationId=${criteriaValue})` +
+                    ' or ' +
+                    '(cql.allRecords=1 ' +
+                    ' not item.temporaryLocationId=""' +
+                    ` and item.permanentLocationId=${criteriaValue})` +
+                    ' or ' +
+                    `(item.temporaryLocationId=${criteriaValue})` +
+                   ')');
+              }
               if (cql) {
                 cql = `(${cql}) and ${filterCql}`;
               } else {
