@@ -7,6 +7,7 @@ import Layer from '@folio/stripes-components/lib/Layer';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import KeyValue from '@folio/stripes-components/lib/KeyValue';
 import Button from '@folio/stripes-components/lib/Button';
+import { Headline } from '@folio/stripes-components';
 import { Link } from 'react-router-dom';
 
 import Items from './Items';
@@ -97,7 +98,7 @@ class ItemsPerHoldingsRecord extends React.Component {
         open={accordionStates[holdingsRecord.id] === undefined || accordionStates[holdingsRecord.id]}
         id={holdingsRecord.id}
         onToggle={accordionToggle}
-        label={formatMsg({ id: 'ui-inventory.holdingsHeader' }, { location: labelLocation, callNumber: labelCallNumber })}
+        label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.holdingsHeader' }, { location: labelLocation, callNumber: labelCallNumber })}</Headline>}
         displayWhenOpen={(
           <div>
             {viewHoldingsButton}

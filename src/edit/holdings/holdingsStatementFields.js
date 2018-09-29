@@ -11,11 +11,10 @@ const renderStatements = ({ fields, meta: { touched, error, submitFailed }, form
       <Col sm={2} smOffset={4}>
         <Button
           type="button"
-          buttonStyle="fullWidth secondary"
           id="clickable-add-statement"
           onClick={() => fields.push()}
         >
-          Add Holdings Statement
+          Add holdings statement
         </Button>
         {(touched || submitFailed) && error && <span>{error}</span>}
       </Col>

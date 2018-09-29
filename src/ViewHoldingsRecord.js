@@ -227,7 +227,7 @@ class ViewHoldingsRecord extends React.Component {
               open={this.state.accordions.administrativeAccordion}
               id="administrativeAccordion"
               onToggle={this.handleAccordionToggle}
-              label={formatMsg({ id: 'ui-inventory.administrativeData' })}
+              label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.administrativeData' })}</Headline>}
             >
               { (holdingsRecord.metadata && holdingsRecord.metadata.createdDate) &&
               <this.cViewMetaData metadata={holdingsRecord.metadata} />
@@ -259,7 +259,7 @@ class ViewHoldingsRecord extends React.Component {
               open={this.state.accordions.locationAccordion}
               id="locationAccordion"
               onToggle={this.handleAccordionToggle}
-              label={formatMsg({ id: 'ui-inventory.location' })}
+              label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.location' })}</Headline>}
             >
               <Row>
                 <Col smOffset={0} sm={4}>
@@ -283,7 +283,7 @@ class ViewHoldingsRecord extends React.Component {
               open={this.state.accordions.holdingsAccordion}
               id="holdingsAccordion"
               onToggle={this.handleAccordionToggle}
-              label={formatMsg({ id: 'ui-inventory.holdings' })}
+              label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.holdings' })}</Headline>}
             >
               { (holdingsRecord.holdingsStatements.length > 0) &&
               <Row>
@@ -297,7 +297,7 @@ class ViewHoldingsRecord extends React.Component {
               open={this.state.accordions.electronicAccessAccordion}
               id="electronicAccessAccordion"
               onToggle={this.handleAccordionToggle}
-              label={formatMsg({ id: 'ui-inventory.electronicAccess' })}
+              label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.electronicAccess' })}</Headline>}
             >
               { (holdingsRecord.electronicLocation && holdingsRecord.electronicLocation.uri) &&
               <Row>

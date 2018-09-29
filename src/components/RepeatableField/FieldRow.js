@@ -11,6 +11,7 @@ import Icon from '@folio/stripes-components/lib/Icon';
 import { Row, Col } from '@folio/stripes-components/lib/LayoutGrid';
 import omit from '@folio/stripes-components/util/omitProps';
 import SRStatus from '@folio/stripes-components/lib/SRStatus';
+import { Headline } from '@folio/stripes-components';
 import css from './RepeatableField.css';
 
 const FieldRowPropTypes = {
@@ -146,7 +147,7 @@ class FieldRow extends React.Component {
         <div ref={this.props.containerRef}>
           <SRStatus ref={(ref) => { this.srstatus = ref; }} />
           <fieldset className={css.RFFieldset}>
-            <legend id={this._arrayId} className={css.RFLegend}>{this.props.label}</legend>
+            <Headline tag="legend" margin="none" id={this._arrayId}>{this.props.label}</Headline>
             <Button
               style={{ marginBottom: '12px' }}
               onClick={() => { this.props.onAddField(fields); }}
@@ -162,7 +163,7 @@ class FieldRow extends React.Component {
       <div ref={this.props.containerRef}>
         <SRStatus ref={(ref) => { this.srstatus = ref; }} />
         <fieldset className={css.RFFieldset}>
-          <legend id={this._arrayId} className={css.RFLegend}>{this.props.label}</legend>
+          <Headline tag="legend" margin="none" id={this._arrayId}>{this.props.label}</Headline>
 
           {fields.map((f, fieldIndex) => (
             <div

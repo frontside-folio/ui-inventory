@@ -236,7 +236,6 @@ class ViewInstance extends React.Component {
         onClick={this.onClickAddNewHoldingsRecord}
         title={formatMsg({ id: 'ui-inventory.addHoldings' })}
         buttonStyle="primary"
-        fullWidth
       >
         {formatMsg({ id: 'ui-inventory.addHoldings' })}
       </Button>
@@ -264,6 +263,9 @@ class ViewInstance extends React.Component {
         <TitleManager record={instance.title} />
         <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.accordions} onToggle={this.handleExpandAll} /></Col></Row>
         <hr />
+        <Headline size="xx-large" tag="h2">
+          {instance.title}
+        </Headline>
         <Row>
           <Col xs={12}>
             <Layout className="display-flex flex-align-items-center padding-bottom-gutter flex-wrap--wrap">
@@ -293,14 +295,11 @@ class ViewInstance extends React.Component {
             </Layout>
           </Col>
         </Row>
-        <Headline size="medium" margin="medium">
-          {instance.title}
-        </Headline>
         <Accordion
           open={this.state.accordions.instanceAccordion}
           id="instanceAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.instanceData' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.instanceData' })}</Headline>}
         >
           { (instance.metadata && instance.metadata.createdDate) &&
             <this.cViewMetaData metadata={instance.metadata} />
@@ -341,7 +340,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.titleAccordion}
           id="titleAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.titleData' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.titleData' })}</Headline>}
         >
           <Row>
             <Col xs={12}>
@@ -360,7 +359,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.identifiersAccordion}
           id="identifiersAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.identifiers' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.identifiers' })}</Headline>}
         >
           { (instance.identifiers.length > 0) &&
             <MultiColumnList
@@ -378,7 +377,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.contributorsAccordion}
           id="contributorsAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.contributors' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.contributors' })}</Headline>}
         >
           { (instance.contributors.length > 0) &&
             <MultiColumnList
@@ -396,7 +395,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.descriptiveAccordion}
           id="descriptiveAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.descriptiveData' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.descriptiveData' })}</Headline>}
         >
           { (instance.publication.length > 0) &&
             <MultiColumnList
@@ -453,7 +452,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.notesAccordion}
           id="notesAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.notes' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.notes' })}</Headline>}
         >
           { (instance.notes.length > 0) &&
           <Row>
@@ -467,7 +466,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.electronicAccessAccordion}
           id="electronicAccessAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.electronicAccess' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.electronicAccess' })}</Headline>}
         >
           { (instance.electronicAccess.length > 0) &&
             <MultiColumnList
@@ -484,7 +483,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.subjectsAccordion}
           id="subjectsAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.subjects' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.subjects' })}</Headline>}
         >
           { (instance.subjects.length > 0) &&
           <Row>
@@ -498,7 +497,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.classificationAccordion}
           id="classificationAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.classification' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.classification' })}</Headline>}
         >
           { (instance.classifications.length > 0) &&
             <MultiColumnList
@@ -585,7 +584,7 @@ class ViewInstance extends React.Component {
           open={this.state.accordions.analyticsAccordion}
           id="analyticsAccordion"
           onToggle={this.handleAccordionToggle}
-          label={formatMsg({ id: 'ui-inventory.instanceRelationships' })}
+          label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.instanceRelationships' })}</Headline>}
         >
           { (instance.childInstances.length > 0) &&
             <Row>

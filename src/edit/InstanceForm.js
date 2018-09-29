@@ -261,8 +261,15 @@ class InstanceForm extends React.Component {
             paneTitle={initialValues.id ? 'Edit Instance' : 'New Instance'}
           >
             <div className={css.instanceForm}>
-              <Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.instanceRecord' })}</Headline>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.administrativeData' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection01} id="instanceSection01">
+              {initialValues.id && (
+                <Headline size="xx-large" tag="h2">{initialValues.title}</Headline>
+              )}
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.administrativeData' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection01}
+                id="instanceSection01"
+              >
                 { (initialValues.metadata && initialValues.metadata.createdDate) &&
                   <this.cViewMetaData metadata={initialValues.metadata} />
                 }
@@ -338,7 +345,12 @@ class InstanceForm extends React.Component {
                   dataOptions={[{ label: formatMsg({ id: 'ui-inventory.selectModeOfIssuance' }), value: '' }, ...modeOfIssuanceOptions]}
                 />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.titleData' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection02} id="instanceSection02">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.titleData' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection02}
+                id="instanceSection02"
+              >
                 <Field
                   label={`${formatMsg({ id: 'ui-inventory.resourceTitle' })} *`}
                   name="title"
@@ -362,13 +374,28 @@ class InstanceForm extends React.Component {
                 />
                 <SeriesFields formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.identifiers' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection03} id="instanceSection03">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.identifiers' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection03}
+                id="instanceSection03"
+              >
                 <IdentifierFields identifierTypes={referenceTables.identifierTypes} formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.contributors' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection04} id="instanceSection04">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.contributors' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection04}
+                id="instanceSection04"
+              >
                 <ContributorFields contributorNameTypes={referenceTables.contributorNameTypes} contributorTypes={referenceTables.contributorTypes} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.descriptiveData' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection05} id="instanceSection05">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.descriptiveData' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection05}
+                id="instanceSection05"
+              >
                 <PublicationFields formatMsg={formatMsg} />
                 <EditionFields formatMsg={formatMsg} />
                 <DescriptionFields formatMsg={formatMsg} />
@@ -392,21 +419,50 @@ class InstanceForm extends React.Component {
                 <PublicationFrequencyFields formatMsg={formatMsg} />
                 <PublicationRangeFields formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.notes' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection07} id="instanceSection07">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.notes' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection07}
+                id="instanceSection07"
+              >
                 <NoteFields formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.electronicAccess' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection08} id="instanceSection08">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.electronicAccess' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection08}
+                id="instanceSection08"
+              >
                 <ElectronicAccessFields formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.subjects' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection09} id="instanceSection09">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.subjects' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection09}
+                id="instanceSection09"
+              >
                 <SubjectFields formatMsg={formatMsg} />
               </Accordion>
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.classifications' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection10} id="instanceSection10">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.classifications' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection10}
+                id="instanceSection10"
+              >
                 <ClassificationFields classificationTypes={referenceTables.classificationTypes} formatMsg={formatMsg} />
               </Accordion>
-              {/* <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.otherRelatedInstances' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection11} id="instanceSection11">
+              {/* <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.otherRelatedInstances' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection11}
+                id="instanceSection11">
               </Accordion> */}
-              <Accordion label={<h3>{formatMsg({ id: 'ui-inventory.instanceRelationships' })}</h3>} onToggle={this.onToggleSection} open={this.state.sections.instanceSection11} id="instanceSection12">
+              <Accordion
+                label={<Headline size="large" tag="h3">{formatMsg({ id: 'ui-inventory.instanceRelationships' })}</Headline>}
+                onToggle={this.onToggleSection}
+                open={this.state.sections.instanceSection11}
+                id="instanceSection12"
+              >
                 <ParentInstanceFields instanceRelationshipTypes={referenceTables.instanceRelationshipTypes} />
                 <ChildInstanceFields instanceRelationshipTypes={referenceTables.instanceRelationshipTypes} />
               </Accordion>
